@@ -365,6 +365,7 @@
 				//by switching the value provided for sColour to the canvas background colour you will be able to use this to erase painted marks
 				fnDebugMessage("fnPaint called at x: " + iX + ", y: " + iY + ", w: " + iWidth + ", h: " + iHeight); //send a debug message with the location and size
 				oCanvasContext.fillStyle = sFillColour; //use the value stored in the sFillColour global variable as the fill colour
+				var offset 
 				oCanvasContext.fillRect(iX-4,iY-3, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
 			}
 			
@@ -372,7 +373,10 @@
 			function fnClearCanvas() {
 				//use this function to clear the canvas
 				fnDebugMessage("fnClear Canvas"); //send a debug message with the function being called	
-				oCanvasContext.clearRect(0, 0, oCanvas.width, oCanvas.height)
+				oCanvasContext.clearRect(0, 0, oCanvas.width, oCanvas.height);
+				oCanvas.style.backgroundColor = sFillColour;
+				document.getElementById("eraser").style.backgroundColor = sFillColour;
+				
 			}
 
 			
@@ -422,11 +426,13 @@
 				} 
 				else {(mode=0)}
 				}
+				
 			function fnslider_ds(){
-				let rvalue=document.querySelector(".slidecontainerR input");
-				let gvalue=document.querySelector(".slidercontainerG input");
-				let bvalue=document.querySelector(".slidercontainerB input");
-				document.getElementById("colourcustom").style.color = "rgb("+ rvalue.value +", "+ gvalue.value +", "+ bvalue.value +")";
+				let rvalue=document.getElementById("myRrange").value;
+				let gvalue=document.getElementById("myGrange").value;
+				let bvalue=document.getElementById("myBrange").value;
+				var temp = "rgb("+ rvalue +","+ gvalue +","+ bvalue+")";
+				document.getElementById("colourcustom").style.backgroundColor = "rgb("+ rvalue +","+ gvalue +","+ bvalue+")";
 			}	
 
 
@@ -531,13 +537,13 @@
 			</div>
         </div>
 		<div class="slidecontainerR">
-			<input type="range" min="0" max="255" value="1" class="slider" id="myRrange" onchange="fnslider_ds()">
+			<input type="range" min="0" max="255" value="0" class="slider" id="myRrange" onchange="fnslider_ds()">
 		</div>
 		<div class="slidecontainerG">
-			<input type="range" min="0" max="255" value="1" class="slider" id="myGrange" onchange="fnslider_ds()">
+			<input type="range" min="0" max="255" value="0" class="slider" id="myGrange" onchange="fnslider_ds()">
 		</div>
 		<div class="slidecontainerB">
-			<input type="range" min="0" max="255" value="1" class="slider" id="myBrange" onchange="fnslider_ds()">
+			<input type="range" min="0" max="255" value="0" class="slider" id="myBrange" onchange="fnslider_ds()">
 		</div>		
 	</body>
 	
