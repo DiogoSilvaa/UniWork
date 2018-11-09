@@ -174,19 +174,19 @@
 
 			#colourcustom {
 				left: 215px;
-				top: 115px;
+				top: 130px;
 				}
 
 			#control1 {
 				position:relative;
-				bottom: 896px;
-				left: 1700px;
+				bottom: 150px;
+				left: 990px;
 
 			}
 			#eraser{
 				position:relative;
-				bottom: 879px;
-				left: 1500px;
+				bottom: 128px;
+				left: 1150px;
 				background-color:#fafafa;
 
 			}
@@ -203,30 +203,32 @@
 			}
 			#erasertext{
 				position:relative;
-				top:-162px;
-				left:1572px;
+				top:699px;
+				left:1215px;
+				font-size: 20px;
 			}
 			#myRrange{
 				position:relative;
-				top:255px;
+				top:120px;
 				left:900px;
 			}
 			
 			#myGrange{
 				position:relative;
-				top:260px;
+				top:125px;
 				left:900px;
 			}
 			
 			#myBrange{
 				position:relative;
-				top:265px;
+				top:130px;
 				left:900px;
 			}
 			
 			#size{
 				position: relative;
-				left:900px;
+				left:950px;
+				top: -280px;
 			}
 			
 			#presetcolourtext{
@@ -255,6 +257,45 @@
 				top: 580px;
 				font-size: 20px;
 				}
+				
+			#toolbox {
+				position: relative;
+				left: 1100px;
+				top: -275px;
+				}
+				
+			#sizetool { 
+				position: relative;
+				left: 980px;
+				top: 430px;
+				font-size: 20px;
+				}
+			
+			#tooltype {
+				position: relative;
+				left: 1200px;
+				top:415px;
+				font-size: 20px;
+				}
+			
+			#red { 
+				position:relative;
+				left: 847px;
+				top: 177px;
+				}
+			
+			#green{ 
+				position: relative;
+				left: 847px;
+				top: 193px;
+				}
+			
+			#blue{ 
+				position: relative;
+				left: 847px;
+				top: 204px;
+				}
+				
 		</style>
 		
 		<script>
@@ -309,32 +350,69 @@
 				var mysize = document.getElementById("size").value
 				var mytool = document.getElementById("toolbox").value 
 				if (mysize === "Small"){
-					iWidth = 5
-					iHeight = 5 
-						if (mytool === "brush"){ 
-						oCanvasContext.fillRect(iX-4,iY-3, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+						if (mytool === "brush"){
+							iWidth = 5
+							iHeight = 5 
+							oCanvasContext.fillRect(iX-4,iY-3, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
 						}
-				}	
+						else if (mytool === "spray"){ 
+								iWidth = 1
+								iHeight = 1
+								var radius = 5 * Math.PI
+								var randomangle = Math.random() * 360
+								iX = iX + Math.cos(randomangle) * radius
+								iY = iY + Math.sin(randomangle) * radius	
+								oCanvasContext.fillRect(iX-4,iY-3, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+						}
+				}
 					
 				else if (mysize === "Medium"){
-					iWidth = 20
-					iHeight = 20
-						if (mytool === "brush"){ 
-						oCanvasContext.fillRect(iX-10,iY-10, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
-					}
-				} 
-				else if (mysize === "Large"){
-					iWidth = 30
-					iHeight = 30
-						if (mytool === "brush"){ 
-						oCanvasContext.fillRect(iX-15,iY-15, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+						if (mytool === "brush"){
+							iWidth = 20
+							iHeight = 20	
+							oCanvasContext.fillRect(iX-10,iY-10, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
 						}
-				} 
-				else if (mysize === "ExtraLarge"){
-					iWidth = 50
-					iHeight = 50
+						else if (mytool === "spray"){ 
+							iWidth = 1
+							iHeight = 1
+							var radius = 10 * Math.PI
+							var randomangle = Math.random() * 360
+							iX = iX + Math.cos(randomangle) * radius
+							iY = iY + Math.sin(randomangle) * radius	
+							oCanvasContext.fillRect(iX-4,iY-3, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle						
+							}
+					}	
+				else if (mysize === "Large"){
 						if (mytool === "brush"){ 
-						oCanvasContext.fillRect(iX-25,iY-25, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+							oCanvasContext.fillRect(iX-15,iY-15, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+							iWidth = 30
+							iHeight = 30
+						}	
+						else if (mytool === "spray"){ 
+							iWidth = 1
+							iHeight = 1
+							var radius = 15 * Math.PI
+							var randomangle = Math.random() * 360
+							iX = iX + Math.cos(randomangle) * radius
+							iY = iY + Math.sin(randomangle) * radius	
+							oCanvasContext.fillRect(iX-4,iY-3, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle		
+							}
+						
+						}			
+				else if (mysize === "ExtraLarge"){
+						if (mytool === "brush"){
+							iWidth = 50 
+							iHeight = 50						
+							oCanvasContext.fillRect(iX-25,iY-25, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+						}
+						else if (mytool === "spray"){ 
+							iWidth = 1
+							iHeight = 1
+							var radius = 25 * Math.PI
+							var randomangle = Math.random() * 360
+							iX = iX + Math.cos(randomangle) * radius
+							iY = iY + Math.sin(randomangle) * radius	
+							oCanvasContext.fillRect(iX-4,iY-3, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle		
 						}
 				} 
 			}
@@ -426,6 +504,7 @@
 		<div id=selectedcolourtext>
 			Selected Colour
 		</div>
+		<div id=erasertext>
 			Eraser
 		</div>
 		
@@ -446,7 +525,26 @@
 		</div>
 		
 		<div id=sizetool>
+			Sizes
+		</div>
+
+		<div id=tooltype>
+			Tool Box
+		</div>
+		
+		<div id=red>
+			Red :
+		</div>
 			
+		<div id=green>
+			Green :
+		</div>
+		
+		<div id=blue>
+			Blue :
+		</div>	
+
+		
         <div id="cw1MainContainer">
 
             <!-- this div block is only used to hold the HTML canvas element -->
