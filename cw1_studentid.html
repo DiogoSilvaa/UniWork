@@ -86,8 +86,8 @@
 
 			#cw1ColoursContainer {
 				position: relative; /* this css property tells the browser that the selected element (in this case id="cw1ColoursContainer") will be specifically told where to be displayed using LEFT and TOP (for x and y). 0, 0 being the last position of the previous element (rather than the top left corner) */
-				left: 160px;
-				bottom: 820px;
+				left: 850px;
+				bottom: 575px;
 			}
 			
 
@@ -167,20 +167,20 @@
 			}
 
 			#colourselected {
-				left: -120px;
-				top: 0px;
+				left: 210px;
+				top: -105px;
 				background-color:transparent;
 			}
 
 			#colourcustom {
-				left: 700px;	
+				left: 215px;
+				top: 115px;
 				}
 
 			#control1 {
 				position:relative;
 				bottom: 896px;
 				left: 1700px;
-
 
 			}
 			#eraser{
@@ -190,38 +190,6 @@
 				background-color:#fafafa;
 
 			}
-			#brushsmall{
-				position:relative;
-				width:5px;
-				height:12px;
-				bottom:892px;
-				left: 1000px;
-				
-			}
-
-			#brushmedium{
-				position:relative;
-				width:15px;
-				height:15px;
-				bottom:892px;
-				left: 1110px;
-			}
-
-			#brushlarge{
-				position:relative;
-				width:35px;
-				height:35px;
-				bottom:889px;
-				left: 1205px;
-			}
-
-			#brushextralarge{
-				position:relative;
-				width:50px;
-				height:50px;
-				bottom:889px;
-				left: 1295px;
-			}	
 
 			.brushsizes{
 				border: 1px solid #a0a0a0; /* this css property defines/sets the border of the selected element (in this case the elements with class="tool") */
@@ -229,68 +197,9 @@
 			}
 			#selectedcolourtext {
 				position:relative;
-				left:26px;
-				top:74px;
-			}
-			#redtext{
-				position:relative;
-				left:185px;
-				top:57px;
-			}
-			#orangetext{
-				position:relative;
-				left:234px;
-				top:38px;
-			}
-			#yellowtext{
-				position:relative;
-				left:295px;
-				top:21px;
-			}
-			#greentext{
-				position:relative;
-				left:359px;
-				top:2px;
-			}
-			#bluetext{
-				position:relative;
-				top:-16px;
-				left:424px;
-			}
-			#purpletext{
-				position: relative;
-				top:-35px;
-				left:477px;
-			}
-			#violettext{
-				position:relative;
-				top:-53px;
-				left:539px;
-			}
-			#blacktext{
-				position:relative;
-				top:-70px;
-				left:600px;
-			}
-			#smallbrushtext{
-				position:relative;
-				top:-88px;
-				left:980px;
-			}
-			#mediumbrushtext{
-				position:relative;
-				top:-107px;
-				left:1100px;
-			}
-			#largebrushtext{
-				position:relative;
-				top:-126px;
-				left:1230px;
-			}
-			#extralargebrushtext{
-				position:relative;
-				top:-144px;
-				left:1350px;
+				left:1035px;
+				top:105px;
+				font-size: 20px;
 			}
 			#erasertext{
 				position:relative;
@@ -299,20 +208,52 @@
 			}
 			#myRrange{
 				position:relative;
-				top:-250px;
-				left:675px;
+				top:255px;
+				left:900px;
 			}
 			
 			#myGrange{
 				position:relative;
-				top:-250px;
-				left:675px;
+				top:260px;
+				left:900px;
 			}
 			
 			#myBrange{
 				position:relative;
-				top:-250px;
-				left:675px;
+				top:265px;
+				left:900px;
+			}
+			
+			#size{
+				position: relative;
+				left:900px;
+			}
+			
+			#presetcolourtext{
+				position:relative;
+				left:1045px;
+				top: 175px;
+				font-size: 20px;
+				}
+				
+			#rgbcolour{
+				position:relative;
+				left: 1025px;
+				top: 250px;
+				font-size: 20px;
+				}
+				
+			#paintingtools{
+				position: relative;
+				left: 1060px;
+				top: 380px;
+				font-size: 20px;
+				}
+			#cleaningtools{
+				position: relative;
+				left: 1060px;
+				top: 580px;
+				font-size: 20px;
 				}
 		</style>
 		
@@ -365,8 +306,37 @@
 				//by switching the value provided for sColour to the canvas background colour you will be able to use this to erase painted marks
 				fnDebugMessage("fnPaint called at x: " + iX + ", y: " + iY + ", w: " + iWidth + ", h: " + iHeight); //send a debug message with the location and size
 				oCanvasContext.fillStyle = sFillColour; //use the value stored in the sFillColour global variable as the fill colour
-				var offset 
-				oCanvasContext.fillRect(iX-4,iY-3, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+				var mysize = document.getElementById("size").value
+				var mytool = document.getElementById("toolbox").value 
+				if (mysize === "Small"){
+					iWidth = 5
+					iHeight = 5 
+						if (mytool === "brush"){ 
+						oCanvasContext.fillRect(iX-4,iY-3, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+						}
+				}	
+					
+				else if (mysize === "Medium"){
+					iWidth = 20
+					iHeight = 20
+						if (mytool === "brush"){ 
+						oCanvasContext.fillRect(iX-10,iY-10, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+					}
+				} 
+				else if (mysize === "Large"){
+					iWidth = 30
+					iHeight = 30
+						if (mytool === "brush"){ 
+						oCanvasContext.fillRect(iX-15,iY-15, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+						}
+				} 
+				else if (mysize === "ExtraLarge"){
+					iWidth = 50
+					iHeight = 50
+						if (mytool === "brush"){ 
+						oCanvasContext.fillRect(iX-25,iY-25, iWidth, iHeight); //fillRect() method (function) draws a "filled" rectangle; default color was specified by the fillstyle
+						}
+				} 
 			}
 			
 
@@ -433,7 +403,7 @@
 				let bvalue=document.getElementById("myBrange").value;
 				var temp = "rgb("+ rvalue +","+ gvalue +","+ bvalue+")";
 				document.getElementById("colourcustom").style.backgroundColor = "rgb("+ rvalue +","+ gvalue +","+ bvalue+")";
-			}	
+			}
 			
 		</script>
 
@@ -446,7 +416,7 @@
 			the first (work out how this sets the width) = 100 
 			the second (work out how this sets the height) = 100 
 	-->
-	<body onload="fnInitialise(0.96*window.innerWidth, 0.85*window.innerHeight);"> <!--Setting the canvas size to 96% of the width of the window and 85% of the height of the window-->
+	<body onload="fnInitialise(800, 800);"> <!--Setting the canvas size to 96% of the width of the window and 85% of the height of the window-->
 
 		<!-- 
 			this div block (HTML page divider) is used to hold the entire interactive painting HTML elements 
@@ -456,46 +426,27 @@
 		<div id=selectedcolourtext>
 			Selected Colour
 		</div>
-		<div id=redtext>
-			Red
-		</div>
-		<div id=orangetext>
-			Orange
-		</div>
-		<div id=yellowtext>
-			Yellow
-		</div>
-		<div id=greentext>
-			Green
-		</div>
-		<div id=bluetext>
-			Blue
-		</div>
-		<div id=purpletext>
-			Purple
-		</div>
-		<div id=violettext>
-			Violet
-		</div>
-		<div id=blacktext>
-			Black
-		</div>
-		<div id=smallbrushtext>
-			Small Brush
-		</div>
-		<div id=mediumbrushtext>
-			Medium Brush
-		</div>
-		<div id=largebrushtext>
-			Large Brush
-		</div>
-		<div id=extralargebrushtext>
-			Extra Large Brush
-		</div>
-		<div id=erasertext>
 			Eraser
 		</div>
-
+		
+		<div id=presetcolourtext>
+			Preset Colours
+		</div>
+		
+		<div id=rgbcolour>
+			RGB Custom Colour
+		</div>
+		
+		<div id=paintingtools>
+			Painting Tools
+		</div>
+		
+		<div id=cleaningtools>
+			Cleaning Tools
+		</div>
+		
+		<div id=sizetool>
+			
         <div id="cw1MainContainer">
 
             <!-- this div block is only used to hold the HTML canvas element -->
@@ -528,12 +479,19 @@
 				<button id="control1" class="tool" onclick="fnClearCanvas()">Reset</button>
 				<button id="eraser" class="tool" onclick="fnColourSelected(this),fnerasermode_ds()"></button> <!--adicionar alert you changed to eraser mode-->
 			</div>
-			<div id="cw1brushsizes">
-				<button id="brushsmall" class="brushsizes" onclick="fnpaintsize(5,5)" ></button>
-				<button id="brushmedium" class="brushsizes"onclick="fnpaintsize(10,10)"></button>
-				<button id="brushlarge" class="brushsizes" onclick="fnpaintsize(25,25)"></button>
-				<button id="brushextralarge"class="brushsizes" onclick="fnpaintsize(50,50)"></button>
-			</div>
+			
+			<select id="size" name="size">
+				<option id="sizesmall" value="Small" onclick="fnpainsize()">Small</option>
+				<option id="sizemedium" value="Medium" onclick="fnpaintsize()">Medium</option>
+				<option id="sizelarge" value="Large" onclick="fnpaintsize()">Large</option>
+				<option id="sizeextralarge" value="ExtraLarge" onclick="fnpaintsize()">Extra Large</option>
+			</select>
+			
+			<select id="toolbox" name="toolbox">
+				<option id="brush" value="brush" onclick="fnpainsize()">Brush</option>
+				<option id="spray" value="spray" onclick="fnpaintsize()">Spray</option>
+			</select>
+			
         </div>
 		<div class="slidecontainerR">
 			<input type="range" min="0" max="255" value="0" class="slider" id="myRrange" onchange="fnslider_ds()">
